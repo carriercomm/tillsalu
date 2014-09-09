@@ -1,0 +1,86 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE]>           <html class="no-js ie-shit"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sv" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
+  <meta name="description" content="Denna domän är till salu.">
+  <meta name="keywords" content="Domäner, Domän, till salu, köp, Radioteknik, Johnie Hjelm">
+  <meta name="author" content="Radioteknik">
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angularjs/angular.js"></script>
+  <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+  
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="main.css">
+
+  <title>Domän till salu</title>
+  <meta charset="UTF-8">
+</head>
+<body ng-app="tillsalu">
+  <div class="site" ng-controller="MainController">
+
+    <div class="wrapper">
+      <h1 class="site-title">Denna domän är till salu</h1>
+
+      <div class="domain">
+        <div class="domain__item domain-name">
+          {{ domain }}
+          {{ test }}
+        </div>
+        <div class="domain__item domain-price">
+          {{ price | currency:'SEK' }}
+        </div>
+        <div class="domain__item domain-offer">
+          <button aria-label="Lägg ett bud" class="domain-offer__btn" ng-click="overlay=true">Lägg ett bud</button>
+        </div>
+      </div>
+
+      <small class="disclaimer"><p>Vill du att denna domän skall bli din? Lägg ett bud!</p></small>
+    </div>
+    <!-- /.wrapper -->
+
+    <div id="overlay" class="overlay" ng-model="overlay" ng-class="{true: 'open'}[overlay]">
+      <div id="offerForm" class="make-offer">
+        <button class="close-btn" ng-click="overlay=false" aria-label="Stäng formuläret"></button>
+        <h2 class="form-title">Lägg ett bud</h2>
+        <form class="offer-form">
+          <div class="offer-form__item">
+            <label class="form-label">Domännamn</label>
+            <div class="form-input">
+              <input type="text" name="domainname" id="domainname" ng-value="domain" readonly>
+              <input type="hidden" name="toEmail" id="toEmail" ng-value="contact">
+            </div>
+          </div>
+          <div class="offer-form__item">
+            <label for="name" class="form-label">Ditt namn</label>
+            <div class="form-input">
+              <input type="text" name="name" id="name">
+            </div>
+          </div>
+          <div class="offer-form__item">
+            <label for="email" class="form-label">Din email</label>
+            <div class="form-input">
+              <input type="email" name="email" id="email">
+            </div>
+          </div>
+          <div class="offer-form__item">
+            <label for="bid" class="form-label">Ditt bud (SEK)</label>
+            <div class="form-input">
+              <input type="number" name="bid" ng-model="bid" id="bid" pattern="[0-9]+([\.,][0-9]+)*">
+            </div>
+          </div>
+          <button class="send-offer" id="submit">Skicka bud</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.site -->
+  <script src="js/main.js"></script>
+</body>
+</html>
