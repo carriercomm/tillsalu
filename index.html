@@ -44,11 +44,11 @@
     </div>
     <!-- /.wrapper -->
 
-    <div id="overlay" class="overlay" ng-model="overlay" ng-class="{true: 'open'}[overlay]">
+    <div id="overlay" class="overlay open" ng-model="overlay" ng-class="{true: 'open'}[overlay]">
       <div id="offerForm" class="make-offer">
         <button class="close-btn" ng-click="overlay=false" aria-label="Stäng formuläret"></button>
         <h2 class="form-title">Lägg ett bud</h2>
-        <form class="offer-form">
+        <form class="offer-form" id="form" novalidate>
           <div class="offer-form__item">
             <label class="form-label">Domännamn</label>
             <div class="form-input">
@@ -59,28 +59,31 @@
           <div class="offer-form__item">
             <label for="name" class="form-label">Ditt namn</label>
             <div class="form-input">
-              <input type="text" name="name" id="name">
+              <input type="text" name="name" id="name" class="required" required>
             </div>
           </div>
           <div class="offer-form__item">
             <label for="email" class="form-label">Din email</label>
             <div class="form-input">
-              <input type="email" name="email" id="email">
+              <input type="email" name="email" id="email" class="required" required>
             </div>
           </div>
           <div class="offer-form__item">
             <label for="bid" class="form-label">Ditt bud (SEK)</label>
             <div class="form-input">
-              <input type="number" name="bid" ng-model="bid" id="bid" pattern="[0-9]+([\.,][0-9]+)*">
+              <input type="text" name="bid" ng-model="bid" id="bid">
             </div>
           </div>
-          <button class="send-offer" id="submit">Skicka bud</button>
+          <input type="submit" class="send-offer" id="submit" value="Skicka bud">
         </form>
       </div>
     </div>
 
+    <a href="http://radioteknik.se" class="radioteknik">Radioteknik</a>
+
   </div>
   <!-- /.site -->
-  <script src="js/main.js"></script>
+  <script src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="main.min.js"></script>
 </body>
 </html>

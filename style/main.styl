@@ -113,6 +113,7 @@ body
   left 0
   background rgba(26,53,71,.85)
   pointer-events none
+  z-index 10
 
   &.open 
     opacity 1
@@ -196,17 +197,20 @@ body
   line-height 3em
   border-right 1px solid #DDE1E5
 
-.form-input input
-  border none
-  background-color #F2F4F5
-  width 100%
-  height 3em
-  padding 0em 1em
-  color #222
-  outline none
+.form-input 
+  position relative
 
-  &:focus
-    background-color #E6EAEC
+  input
+    border none
+    background-color #F2F4F5
+    width 100%
+    height 3em
+    padding 0em 1em
+    color #222
+    outline none
+
+    &:focus
+      background-color #E6EAEC
 
 .form-input input[readonly]
   background-color #fff
@@ -240,3 +244,66 @@ body
     background     -ms-linear-gradient(#3774ff, #5588fd)
     background      -o-linear-gradient(#3774ff, #5588fd)
     background         linear-gradient(#3774ff, #5588fd)
+
+  &:disabled
+    opacity .5
+
+    &:hover
+      background -webkit-linear-gradient(#5588fd, #3774ff)
+      background    -moz-linear-gradient(#5588fd, #3774ff)
+      background     -ms-linear-gradient(#5588fd, #3774ff)
+      background      -o-linear-gradient(#5588fd, #3774ff)
+      background         linear-gradient(#5588fd, #3774ff)
+
+// Validation
+label.error
+  position absolute
+  right 105%
+  top 50%
+  transform translateY(-50%)
+  background-color #C02932
+  color #fff
+  font-size 12px
+  white-space nowrap
+  display inline-block
+  padding 1em
+  border-radius 4px
+  
+  &:after
+    content ''
+    display block
+    width 0
+    height 0
+    border 6px solid transparent
+    border-left-color #C02932
+    position absolute
+    top 50%
+    left 100%
+    transform translateY(-50%)
+
+
+/**
+ * Radioteknik
+ */
+.radioteknik
+  font-family "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif
+  text-transform uppercase
+  display inline-block
+  margin 0
+  padding 12px 6px 11px
+  border 3px solid #fff
+  color #fff
+  border-radius 6px
+  font-size 16px
+  line-height 0
+  text-decoration none
+  font-weight bold
+  position absolute
+  bottom 1em
+  left 50%
+  transform translateX(-50%)
+  opacity .7
+  transition opacity .3s ease
+
+  &:hover
+    opacity 1

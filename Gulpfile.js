@@ -30,7 +30,7 @@ gulp.task('style', function() {
 // Concatinate and minify Javascript
 gulp.task('js', function() {
   gulp.src('./js/*.js')
-    .pipe(uglify())
+    .pipe(uglify({ mangle: false }))
     .pipe(concat('main.min.js'))
     .pipe(reload({
       stream: true
