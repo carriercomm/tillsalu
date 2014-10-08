@@ -37,13 +37,6 @@
               }]
             }
           }
-        })
-        .success(function (response) {
-          // alert("Your message has been sent");
-          console.log('Great success!');
-        })
-        .fail(function (response) {
-          // alert("Error sending message");
         });
   });
 
@@ -65,34 +58,26 @@
       email: {
         required: true,
         email: true
+      },
+      bid: {
+        required: true,
+        number: true
       }
     },
     messages: {
-      name: "Vänligen fyll i ditt namn",
+      name: "Vänligen fyll i ditt namn.",
       email: {
-        required: "Vi behöver en mailadress för att kunna kontakta dig",
+        required: "Vi behöver en mailadress för att kunna kontakta dig.",
         email: "Din Email måste vara i formatet namn@domän.com"
+      },
+      bid: {
+        required: "Vänligen ange ditt bud.",
+        number: "Du måste uppge ett belopp."
       }
     },
-    submitHandler: function() { alert("Submitted!"); }
+    submitHandler: function() { 
+      $("#submit").val("Tack!").addClass("success-send");
+    }
   });
 
-  /**
-   * Disable submit button until 
-   * name and email input has value
-   */
-  function simpleValidate() {
-    $("#submit").prop("disabled", true);
-
-    $("#form").on("change", function () {
-      if ( $("#name").val() === '' || $("#email").val() === ''  ) {
-        $("#submit").prop("disabled", true);
-      } else {
-        $("#submit").prop("disabled", false);
-      }
-    });
-  }
-
-  simpleValidate();
-  
 })();
