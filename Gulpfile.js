@@ -2,6 +2,7 @@
  * Gulpfile
  */
 var gulp = require("gulp"),
+    package = require('./package.json'),
     prefix = require("gulp-autoprefixer"),
     change = require("gulp-changed"),
     cssmin = require("gulp-cssmin"),
@@ -9,6 +10,7 @@ var gulp = require("gulp"),
     stylus = require("gulp-stylus"),
     uglify = require("gulp-uglify"),
     concat = require("gulp-concat"),
+    header = require("gulp-header"),
     es = require("event-stream"),
     browserSync = require("browser-sync"),
     reload = browserSync.reload;
@@ -16,13 +18,35 @@ var gulp = require("gulp"),
 var jsFiles = './main.min.js',
     cssFiles = './main.css';
 
+/*-------------------------------------------------------------------
+
+  Banner using meta data from package.json
+
+-------------------------------------------------------------------*/
+
+var banner = [
+  '/*!\n' +
+  ' * <%= package.name %>\n' +
+  ' * <%= package.description %>\n' +
+  ' * <%= package.url %>\n' +
+  ' * @author <%= package.author %>\n' +
+  ' * @version <%= package.version %>\n' +
+  ' * Copyright ' + new Date().getFullYear() + '. <%= package.license %> licensed.\n' +
+  ' */',
+  '\n'
+].join('');
+
 gulp.task('style', function() {
   gulp.src('./style/main.styl')
     .pipe(stylus())
     .pipe(prefix('last 2 versions'))
     .pipe(cssmin())
+    .pipe(concat('main.min.css'))
     .pipe(reload({
       stream: true
+    }))
+    .pipe(header(banner, {
+      package: package
     }))
     .pipe(gulp.dest('./'));
 });
@@ -34,6 +58,9 @@ gulp.task('js', function() {
     .pipe(concat('main.min.js'))
     .pipe(reload({
       stream: true
+    }))
+    .pipe(header(banner, {
+      package: package
     }))
     .pipe(gulp.dest('./'));
 });
