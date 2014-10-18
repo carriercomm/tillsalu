@@ -298,27 +298,21 @@ label.error
 
 
 /**
- * Radioteknik
+ * Owner
  */
-.radioteknik
-  font-family "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif
-  text-transform uppercase
-  display inline-block
-  margin 0
-  padding 12px 6px 11px
-  border 3px solid #fff
-  color #fff
-  border-radius 6px
-  font-size 16px
-  line-height 0
-  text-decoration none
-  font-weight bold
+.owner
   position absolute
-  bottom 1em
+  bottom 15px
   left 50%
   transform translateX(-50%)
+  color #fff
+  text-decoration none
+  font-size 12px
   opacity .7
-  transition opacity .3s ease
+  transition .25s opacity
+
+  &:before
+    content "Innehavare: "
 
   &:hover
     opacity 1

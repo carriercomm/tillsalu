@@ -13,6 +13,8 @@
     tillSaluData.getData().success(function (data) {
       $scope.price = data.pris;
       $scope.contact = data.email;
+      $scope.owner = data.owner;
+      $scope.owner_site = data.owner_site || "mailto:" + data.email;
     });
 
   }]);

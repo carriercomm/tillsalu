@@ -30,7 +30,6 @@
       <div class="domain">
         <div class="domain__item domain-name">
           {{ domain }}
-          {{ test }}
         </div>
         <div class="domain__item domain-price">
           {{ price | currency:'SEK' }}
@@ -79,7 +78,7 @@
       </div>
     </div>
 
-    <a href="http://radioteknik.se" class="radioteknik">Radioteknik</a>
+    <a href="{{ owner_site }}" ng-show="owner" class="owner">{{ owner }}</a>
 
   </div>
   <!-- /.site -->
